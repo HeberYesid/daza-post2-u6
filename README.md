@@ -34,4 +34,7 @@ Proyecto Java Web MVC tradicional extendido con autenticación, validaciones rob
 
 ## Capturas
 
-Agregar evidencias en `capturas/`.
+![English](src/main/capturas/english.png/)
+![Spanish](src/main/capturas/spanish.png)
+![Vacio](src/main/capturas/vacio.png)
+

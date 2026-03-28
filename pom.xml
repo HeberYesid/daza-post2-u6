@@ -35,6 +35,8 @@
     </dependencies>
 
     <build>
+        <finalName>mvc-productos-auth-i18n</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
