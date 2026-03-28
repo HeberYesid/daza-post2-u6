@@ -1,22 +1,37 @@
-# U6 PostContenido 2 - DP en cadenas y grafos
+# daza-post2-u6
 
-## Implementado
-- `StringDP`: LCS completo, reconstruccion de LCS, version O(min(n,m)), Edit Distance, alineamiento y version de memoria optimizada.
-- `FloydWarshall`: APSP, deteccion de ciclo negativo y reconstruccion de camino minimo.
-- `StringDPBench`: benchmark de `lcsLength` para n=100, 500 y 1000.
+Proyecto Java Web MVC tradicional extendido con autenticación, validaciones robustas e internacionalización (es/en).
 
-## Resultados de referencia (LCS)
+## Arquitectura
 
-| Longitud | lcsLength (us/op) |
-|----------|-------------------|
-| 100      | 32.6              |
-| 500      | 762.4             |
-| 1000     | 3088.1            |
+- Model: Producto, ProductoDAO, Usuario
+- Service: ProductoService
+- Controller: ProductoServlet, LoginServlet, LogoutServlet, IdiomaServlet
+- Views JSP: login, lista, formulario, error
 
-## Analisis
-La evolucion del tiempo al incrementar la longitud de las cadenas es consistente con comportamiento cuadratico. Entre 100 y 500 caracteres el costo se multiplica varias veces, y al llegar a 1000 el crecimiento sigue la misma tendencia porque la tabla DP aumenta en area n*m. Esto confirma que la recurrencia de LCS depende del total de celdas procesadas y no solo de la longitud lineal. En pruebas de exactitud, `lcsMemOpt` y `editDistanceMemOpt` producen los mismos valores que las versiones completas para multiples pares aleatorios, por lo que la optimizacion de memoria mantiene correctitud. En grafos, Floyd-Warshall detecta correctamente ciclos negativos y mantiene `INF` cuando no existe camino. La reconstruccion de ruta retorna una trayectoria valida con costo igual a la distancia minima calculada.
+## Funcionalidades
 
-## Ejecucion
-- Compilar: `mvn compile`
-- Probar: `mvn test`
-- Benchmark: `mvn exec:java -Dexec.mainClass=org.openjdk.jmh.Main`
+- Listar productos
+- Crear producto
+- Editar producto
+- Eliminar producto
+- Login con HttpSession (admin/viewer)
+- Restricciones por rol (viewer solo lectura)
+- Selector de idioma persistido en sesión
+- Validaciones en servidor y PRG
+
+## Prerrequisitos
+
+- JDK 17+
+- Maven 3.8+
+- Tomcat 10.x
+
+## Ejecución
+
+1. `mvn clean package`
+2. Desplegar el WAR en Tomcat
+3. Navegar a `/mvc-productos-auth-i18n/login`
+
+## Capturas
+
+Agregar evidencias en `capturas/`.
